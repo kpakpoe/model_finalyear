@@ -33,8 +33,10 @@ def predict_price(transaction_data: data_to_be_used_for_prediction):
         # Save prediction to return
         prediction_dict = {'Prediction': []}
         data_list = predictions.tolist()
-        for prediction in data_list[0]:
-            prediction_dict['Prediction'].append(prediction[0])
+
+        for predictions in data_list:
+            for prediction in predictions:
+                prediction_dict['Prediction'].append(prediction[0])
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=e)
     
